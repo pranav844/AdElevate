@@ -169,17 +169,28 @@ public class AdServiceImpl implements AdService {
         dto.setDescription(ad.getDescription());
         dto.setMinPrice(ad.getMinPrice());
         dto.setMaxPrice(ad.getMaxPrice());
-        dto.setVendorId(ad.getVendor().getVendorId());
+        dto.setVendorId(ad.getVendor() != null ? ad.getVendor().getVendorId() : null);
 
         dto.setTitle(ad.getTitle());
-        dto.setCategory(ad.getCategory().name());
-        dto.setCity(ad.getLocation().getCity());
+        dto.setCategory(ad.getCategory() != null ? ad.getCategory().name() : null);
+        dto.setCity(ad.getLocation() != null ? ad.getLocation().getCity() : null);
         dto.setProductImage(ad.getProductImage());
-        dto.setPlanType(ad.getSubscriptionPlan().getPlanName().name());
+        
+        if (ad.getSubscriptionPlan() != null) {
+            dto.setPlanId(ad.getSubscriptionPlan().getPlanId());
+            dto.setPlanName(ad.getSubscriptionPlan().getPlanName() != null ? ad.getSubscriptionPlan().getPlanName().name() : "SILVER");
+            dto.setPlanType(ad.getSubscriptionPlan().getPlanName() != null ? ad.getSubscriptionPlan().getPlanName().name() : "SILVER");
+            dto.setPlanPrice(ad.getSubscriptionPlan().getPrice());
+        } else {
+            dto.setPlanType("SILVER");
+            dto.setPlanName("SILVER");
+            dto.setPlanPrice(499.0);
+        }
+
         dto.setAverageRating(adRepository.findAverageRatingByAdId(ad.getAdId()));
         dto.setTotalReviews(adRepository.countRatingsByAdId(ad.getAdId()));
-        dto.setPriceRange("₹" + ad.getMinPrice() + "–₹" + ad.getMaxPrice());
-        dto.setStatus(ad.getStatus().name());
+        dto.setPriceRange("₹" + (ad.getMinPrice() != null ? ad.getMinPrice().intValue() : 0) + "–₹" + (ad.getMaxPrice() != null ? ad.getMaxPrice().intValue() : 0));
+        dto.setStatus(ad.getStatus() != null ? ad.getStatus().name() : null);
         return dto;
     }
 

@@ -10,9 +10,9 @@ const CATEGORIES = [
 ];
 
 const PLANS = [
-  { id: 2, label: 'Silver Plan — ₹349', name: 'SILVER' },
-  { id: 1, label: 'Gold Plan — ₹699', name: 'GOLD' },
-  { id: 5, label: 'Platinum Plan — ₹1099', name: 'PLATINUM' },
+  { id: 1, label: 'Platinum Plan — ₹1,299 (Highest Visibility)', name: 'PLATINUM' },
+  { id: 2, label: 'Gold Plan — ₹799 (High Visibility)', name: 'GOLD' },
+  { id: 3, label: 'Silver Plan — ₹499 (Standard)', name: 'SILVER' },
 ];
 
 export default function CreateAdModal({ currentUser, onClose, onAdCreated }) {

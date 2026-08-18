@@ -15,7 +15,10 @@ public class AdResponseDto {
     private String category;          // Clothing & Fashion
     private String city;              // Bangalore, KA
     private String productImage;      // Image URL or path
-    private String planType;          // Platinum / Gold / Silver
+    private String planType;          // PLATINUM / GOLD / SILVER
+    private Long planId;              // 1, 2, 3
+    private String planName;          // PLATINUM / GOLD / SILVER
+    private Double planPrice;         // 1299.0, 799.0, 499.0
     private Double averageRating;     // 4.8
     private Integer totalReviews;     // 128
     private String priceRange;        // ₹999–₹4,999 or ₹299/visit
